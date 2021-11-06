@@ -26,14 +26,14 @@
 </style>
 <head>
     <meta charset="UTF-8">
-    <title>База данных продуктов</title>
+    <title>База данных поставщиков</title>
 </head>
 <body>
 
-<h2>Список продуктов</h2>
+<h2>Список поставщиков</h2>
 
 
-<div><%= request.getAttribute("products")  %>
+<div><%= request.getAttribute("suppliers")  %>
 </div>
 <p>
 

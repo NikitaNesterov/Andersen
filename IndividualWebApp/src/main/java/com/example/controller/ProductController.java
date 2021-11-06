@@ -5,6 +5,7 @@ import com.example.model.Product;
 import com.example.service.ProductService;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,26 +23,51 @@ import java.util.logging.Logger;
 public class ProductController extends HttpServlet {
 
     private static final long SERIALVERSIONUID = 1L;
-    private ProductService productService = new ProductService();
+    private ProductService productService;
     private static final Logger LOGGER = Logger.getLogger(ProductController.class.getName());
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
-
+    public void init() {
+        productService = new ProductService();
     }
 
     @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        switch (request.getSession().getAttribute("method").toString()) {
+            case "insert":
+               insert(request, response);
+                break;
+        }
+    }
+
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       List<Product> allProducts = new ArrayList<>();
+        List<Product> allProducts = new ArrayList<>();
         try {
             allProducts = productService.findAllInDatabase();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        request.setAttribute("products", allProducts);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/allProducts");
+        request.setAttribute("products", allProducts);
         dispatcher.forward(request, response);
+    }
+
+    private void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    Product product = new Product(
+                        request.getParameter("productName"),
+                        Integer.parseInt(request.getParameter("productQuantity")),
+                        request.getParameter("productSupplier"));
+
+                try {
+                    productService.saveInDataBase(product);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/Greetingmenu");
+                dispatcher.forward(request, response);
     }
 
 

@@ -5,17 +5,28 @@
          version="4.0">
 
 
+    <welcome-file-list>
+        <welcome-file>Greeting.jsp</welcome-file>
+    </welcome-file-list>
+
+
       <display-name>Archetype Created Web Application</display-name>
      <servlet>
         <servlet-name>ProductController</servlet-name>
         <servlet-class>com.example.controller.ProductController</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>ProductController</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/productController</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>SupplierController</servlet-name>
+        <servlet-class>com.example.controller.SupplierController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SupplierController</servlet-name>
+        <url-pattern>/supplierController</url-pattern>
+    </servlet-mapping>
      <servlet>
         <servlet-name>GreetingJsp</servlet-name>
         <jsp-file>/Greeting.jsp</jsp-file>
@@ -31,5 +42,21 @@
     <servlet-mapping>
         <servlet-name>ShowProductsJsp</servlet-name>
         <url-pattern>/allProducts</url-pattern>
+    </servlet-mapping>
+      <servlet>
+        <servlet-name>ShowSuppliersJsp</servlet-name>
+        <jsp-file>/ShowSuppliers.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowSuppliersJsp</servlet-name>
+        <url-pattern>/allSuppliers</url-pattern>
+    </servlet-mapping>
+        <servlet>
+        <servlet-name>InsertProduct.jsp</servlet-name>
+        <jsp-file>/InsertProduct.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertProduct.jsp</servlet-name>
+        <url-pattern>/createProduct</url-pattern>
     </servlet-mapping>
 </web-app>

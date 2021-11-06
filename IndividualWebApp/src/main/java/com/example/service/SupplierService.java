@@ -21,8 +21,8 @@ public class SupplierService implements ServiceImpl<Supplier>{
     }
 
     @Override
-    public boolean saveInDataBase(Supplier supplier) throws SQLException {
-        return daoSupplier.save(supplier);
+    public void saveInDataBase(Supplier supplier) throws SQLException {
+        daoSupplier.save(supplier);
     }
 
     @Override

@@ -31,11 +31,15 @@
 </head>
 <body>
 <h1> "Приветствуем Вас на стартовой странице нашей Базы Данных"</h1>
-<div>
-    <p>
-    <form action="products" method="get"> </form>
-        <input type="submit" value="Нажмите, чтобы начать работу с базой данных">
-    </form>
-</div>
+<form action="productController" method="get">
+    <input type="submit" value="Посмотреть все продукты">
+</form>
+<form action="supplierController" method="get">
+    <input type="submit" value="Посмотреть всех поставщиков">
+</form>
+<form action="createProduct" method="get">
+    <input type="submit" value="Создать новый продукт">
+</form>
+
 </body>
 </html>

@@ -10,7 +10,7 @@ public interface ServiceImpl<T> {
 
     List<T> findAllInDatabase() throws SQLException;
 
-    boolean saveInDataBase(T t) throws SQLException;
+    void saveInDataBase(T t) throws SQLException;
 
     boolean updateInDatabase(T t) throws SQLException;
 

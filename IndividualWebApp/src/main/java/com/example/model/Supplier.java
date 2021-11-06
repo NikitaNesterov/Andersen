@@ -1,29 +1,29 @@
 package com.example.model;
 
+import java.util.Objects;
+
 /**
  * @author Nikita Nesterov
  */
 public class Supplier {
     int id;
     String supplierTitle;
-    String supplierLocation;
+    int supplierEmployeeQuantity;
 
-    public Supplier(int id) {
-        this.id = id;
+    public Supplier(String supplierTitle, int supplierEmployeeQuantity) {
+        this.supplierTitle = supplierTitle;
+        this.supplierEmployeeQuantity = supplierEmployeeQuantity;
     }
 
-    public Supplier(int id, String supplierTitle, String supplierStatus) {
-        this.id = id;
+     public Supplier(String supplierTitle) {
         this.supplierTitle = supplierTitle;
-        this.supplierLocation = supplierStatus;
+    }
+
+    public Supplier(int supplierId, String supplierTitle, int supplierEmployeeQuantity) {
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getSupplierTitle() {
@@ -34,11 +34,34 @@ public class Supplier {
         this.supplierTitle = supplierTitle;
     }
 
-    public String getSupplierLocation() {
-        return supplierLocation;
+    public int getSupplierEmployeeQuantity() {
+        return supplierEmployeeQuantity;
     }
 
-    public void setSupplierLocation(String supplierStatus) {
-        this.supplierLocation = supplierStatus;
+    public void setSupplierEmployeeQuantity(int supplierEmployeeQuantity) {
+        this.supplierEmployeeQuantity = supplierEmployeeQuantity;
+    }
+
+    @Override
+    public String toString() {
+
+        final StringBuffer supplier = new StringBuffer("Supplier{");
+        supplier.append("title='").append(supplierTitle).append('\'');
+        supplier.append(", employee quantity='").append(supplierEmployeeQuantity).append('\'');
+        supplier.append('}');
+        return supplier.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Supplier supplier = (Supplier) o;
+        return id == supplier.id && supplierEmployeeQuantity == supplier.supplierEmployeeQuantity && supplierTitle.equals(supplier.supplierTitle);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, supplierTitle, supplierEmployeeQuantity);
     }
 }

@@ -13,7 +13,7 @@ public interface Dao<T> {
 
     List<T> findAll() throws SQLException;
 
-    boolean save(T t) throws SQLException;
+    void save(T t) throws SQLException;
 
     boolean update(T t) throws SQLException;
 

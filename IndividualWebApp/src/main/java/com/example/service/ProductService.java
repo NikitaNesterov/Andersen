@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 
+/**
+ *
+ */
 public class ProductService implements ServiceImpl<Product>{
 
     private DaoProduct daoProduct = new DaoProduct();
@@ -22,8 +25,8 @@ public class ProductService implements ServiceImpl<Product>{
     }
 
     @Override
-    public boolean saveInDataBase(Product product) throws SQLException {
-        return daoProduct.save(product);
+    public void saveInDataBase(Product product) throws SQLException {
+        daoProduct.save(product);
     }
 
     @Override
@@ -35,4 +38,5 @@ public class ProductService implements ServiceImpl<Product>{
     public boolean deleteInDataBase(Product product) throws SQLException {
         return daoProduct.delete(product);
     }
+
 }
